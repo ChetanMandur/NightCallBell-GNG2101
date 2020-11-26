@@ -1,0 +1,8 @@
+https://medium.com/towards-artificial-intelligence/creating-a-voice-recognition-application-with-python-57d8c3e55256
+
+1) open this folder in CMD w/ admin privs
+2) run 'python get-pip.py' if you dont have pip
+3) run 'python -m pip install SpeechRecognition'
+4) run 'python -m pip install pipwin'
+5) run 'python -m pipwin install pyaudio'
+6) run 'python -m speech_recognition' to test if everything works
