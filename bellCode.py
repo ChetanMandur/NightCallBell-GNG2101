@@ -1,3 +1,6 @@
+from bluedot import BlueDot #pip install bluedot
+
+import gpiozero
 import speech_recognition as sr
 r = sr.Recognizer()
 
@@ -11,17 +14,18 @@ while True:
             text = r.recognize_google(data,language='en')
             test = {"help", "swag"}
             if any(word in text for word in test):
-                print("YOU SAID KEYWORD LETS GOOOOOOOOOOO")
+                print("keyword detected")
                 ##BELOW IS PSUEDOCODE, JUST PLANNING WHERE CODE WILL GO
-                # click_mouse()
-                # counter = 0
-                # led.on()
-                # while counter <200:
-                #     counter = counter +1
-                # led.off()
+                click_mouse()
+                counter = 0
+                led.on()
+                while counter <200:
+                    counter = counter +1
+                led.off()
 
             print(text)
     
     except Exception as e:
         print("FAIL/NOTHING IS DETECTED")
         pass
+        
