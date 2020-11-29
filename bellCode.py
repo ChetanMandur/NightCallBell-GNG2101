@@ -1,17 +1,17 @@
 from bluedot import BlueDot #pip install bluedot
 from bluedot.btcomm import BluetoothClient # https://bluedot.readthedocs.io/en/latest/btcommapi.html
 from signal import pause
-import gpiozero import LED
+from gpiozero import RGBLED, Button
+from time import sleep
 import speech_recognition as sr
 
 r = sr.Recognizer()
 
-led = gpiozero.LED(7)
-
-
+led = RGBLED(red=9, green=10,blue=11)
 
 def data_recieved(data):
-    led.off()
+    print(data)
+    led.color = (0,0,0)
 
 
 c = BluetoothClient("raspberrypi", data_recieved)
@@ -26,10 +26,11 @@ while True:
             if any(word in text for word in test):
                 print("keyword detected")
                 c.send("keyword detected")
-                
+                led.color = (1,0,0)
+                pause()
                 
 
-            print(text)
+            print("receiver pressed the button")
     
     except Exception as e:
         print("FAIL/NOTHING IS DETECTED")

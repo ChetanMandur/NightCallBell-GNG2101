@@ -1,14 +1,22 @@
 from bluedot.btcomm import BluetoothServer
 from signal import pause
-import gpiozero
+from gpiozero import RGBLED, Button
 
-led = gpiozero.LED(7)
 
-s = BluetoothServer(data_received)
+led = RGBLED(red=9, green=10,blue=11)
+button = Button(2)
+button.when_pressed = button_pressed
+
+
+def button_pressed():
+    s.send("keyword receieved")
 
 def data_received(data):
-    led.on()
-    #Speaker on
-    
-# while True:
-    
+    print(data)
+    # s.send(data)
+    pause()
+
+
+s = BluetoothServer(data_received)
+while True:
+    pause()
