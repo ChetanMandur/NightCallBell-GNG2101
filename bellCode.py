@@ -12,6 +12,7 @@ led = RGBLED(red=9, green=10,blue=11)
 def data_recieved(data):
     print(data)
     led.color = (0,0,0)
+    print("receiver pressed the button")
 
 
 c = BluetoothClient("raspberrypi", data_recieved)
@@ -27,10 +28,10 @@ while True:
                 print("keyword detected")
                 c.send("keyword detected")
                 led.color = (1,0,0)
-                pause()
+                # pause()
                 
 
-            print("receiver pressed the button")
+            print(text)
     
     except Exception as e:
         print("FAIL/NOTHING IS DETECTED")

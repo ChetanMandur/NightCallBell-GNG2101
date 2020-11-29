@@ -1,10 +1,11 @@
 from bluedot.btcomm import BluetoothServer
 from signal import pause
-from gpiozero import RGBLED, Button
+from gpiozero import RGBLED, Button, LED
 
 
-led = RGBLED(red=9, green=10,blue=11)
-button = Button(2)
+led = LED(3)
+# led = RGBLED(red=9, green=10,blue=11)
+# button = Button(2)
 # button.when_pressed = button_pressed
 
 
@@ -13,10 +14,12 @@ button = Button(2)
 
 def data_received(data):
     print(data)
-    led.color=(1,0,0)
+    led.on()
+    # led.color=(1,0,0)
     command = input("Alert recieved. Type anything to emulate a button press")
-    led.color=(0,0,0)
-    s.send(data)
+    # led.color=(0,0,0)
+    led.off()
+    s.send("keyword recieved")
     # pause()
 
 
