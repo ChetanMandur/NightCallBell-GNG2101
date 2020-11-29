@@ -1,7 +1,7 @@
 from bluedot import BlueDot #pip install bluedot
 from bluedot.btcomm import BluetoothClient # https://bluedot.readthedocs.io/en/latest/btcommapi.html
 from signal import pause
-import gpiozero
+import gpiozero import LED
 import speech_recognition as sr
 
 r = sr.Recognizer()
