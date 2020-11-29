@@ -8,8 +8,8 @@ led = RGBLED(red=4, green=2,blue=1)
 while True:
     try:
         with sr.Microphone() as source:    
-            # r.adjust_for_ambient_noise(source)
-            r.energy_threshold(20)
+            r.adjust_for_ambient_noise(source)
+            # r.energy_threshold(20)
             data = r.record(source, duration=3)
             text = r.recognize_google(data,language='en')
             test = {"help", "swag","penis"}
