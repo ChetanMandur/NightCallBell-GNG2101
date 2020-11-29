@@ -16,13 +16,13 @@ while True:
             if any(word in text for word in test):
                 print("YOU SAID KEYWORD LETS GOOOOOOOOOOO")
                 print("LED should now be red")
-                led.color(1,0,0)
+                led.color = (1,0,0)
                 sleep(1)
 
             print(text)
     
     except Exception as e:
         print("FAIL/NOTHING IS DETECTED")
-        led.color(0,0,1)
+        led.color = (0,0,1)
         sleep(1)
         pass
