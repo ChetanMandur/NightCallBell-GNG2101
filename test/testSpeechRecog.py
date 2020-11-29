@@ -3,7 +3,7 @@ from gpiozero import RGBLED, Button
 from time import sleep
 r = sr.Recognizer()
 
-led = RGBLED(red=4, green=2,blue=1)
+led = RGBLED(red=9, green=10,blue=11)
 
 while True:
     try:
