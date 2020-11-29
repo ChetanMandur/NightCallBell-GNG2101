@@ -1,10 +1,20 @@
 from bluedot import BlueDot #pip install bluedot
-
+from bluedot.btcomm import BluetoothClient # https://bluedot.readthedocs.io/en/latest/btcommapi.html
+from signal import pause
 import gpiozero
 import speech_recognition as sr
+
 r = sr.Recognizer()
 
-#led = gpiozero.LED(PIN LOCATION)
+led = gpiozero.LED(7)
+
+
+
+def data_recieved(data):
+    led.off()
+
+
+c = BluetoothClient("raspberrypi", data_recieved)
 
 while True:
     try:
@@ -15,13 +25,9 @@ while True:
             test = {"help", "swag"}
             if any(word in text for word in test):
                 print("keyword detected")
-                ##BELOW IS PSUEDOCODE, JUST PLANNING WHERE CODE WILL GO
-                click_mouse()
-                counter = 0
-                led.on()
-                while counter <200:
-                    counter = counter +1
-                led.off()
+                c.send("keyword detected")
+                
+                
 
             print(text)
     
