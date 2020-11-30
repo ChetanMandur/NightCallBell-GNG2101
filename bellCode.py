@@ -21,7 +21,7 @@ while True:
     try:
         with sr.Microphone() as source:    
             # r.adjust_for_ambient_noise(source)
-            r.energy_threshold(50)
+            # r.energy_threshold(50)
             data = r.record(source, duration=3)
             text = r.recognize_google(data,language='en')
             test = {"help", "swag"}
@@ -35,6 +35,6 @@ while True:
             print(text)
     
     except Exception as e:
-        print("FAIL/NOTHING IS DETECTED")
+        print("Nothing has been detected...")
         pass
         
