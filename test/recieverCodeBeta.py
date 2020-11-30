@@ -3,7 +3,7 @@ from signal import pause
 from gpiozero import RGBLED, Button, LED
 
 
-led = LED(3)
+led = LED(2)
 # led = RGBLED(red=9, green=10,blue=11)
 # button = Button(2)
 # button.when_pressed = button_pressed
