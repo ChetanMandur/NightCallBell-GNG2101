@@ -20,8 +20,8 @@ c = BluetoothClient("raspberrypi", data_recieved)
 while True:
     try:
         with sr.Microphone() as source:    
-            # r.adjust_for_ambient_noise(source)
-            r.energy_threshold = 0
+            r.adjust_for_ambient_noise(source)
+            # r.energy_threshold = 0
             data = r.record(source, duration=5)
             text = r.recognize_google(data,language='en')
             test = {"help", "swag"}
