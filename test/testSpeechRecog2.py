@@ -3,6 +3,17 @@ import speech_recognition as sr
 from time import sleep
 r = sr.Recognizer()
 
+##Start animation
+print("red")
+sleep(1)
+print("green")
+sleep(1)
+print("pink")
+# led.blink()
+#led.color = (0,0,0)
+sleep(1)
+print("off")
+
 
 while True:
     try:
@@ -11,9 +22,15 @@ while True:
             r.energy_threshold = 0
             data = r.record(source, duration=5)
             text = r.recognize_google(data,language='en')
-            test = {"help", "swag","penis"}
-            if any(word in text for word in test):
+            test = {"help", "swag","hey"}
+            stopWords = {"stop"}
+
+            if any(word in text for word in stopWords):
+                print("YOU SAID STOP AHHHHHHHHHHH")
+
+            elif any(word in text for word in test):
                 print("YOU SAID KEYWORD LETS GOOOOOOOOOOO")
+                
 
 
             print(text)
