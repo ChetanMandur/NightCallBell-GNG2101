@@ -6,26 +6,33 @@ from gpiozero import RGBLED, Button, LED
 # led = RGBLED(red=9, green=10,blue=11)
 led = LED(2)
 button = Button(3)
-# button.when_pressed = button_pressed
+waiting = False
 
+button.when_pressed = button_pressed
 
-# def button_pressed():
-#     s.send("keyword receieved")
+def button_pressed():
+    if (waiting == True):
+        led.off()
+        s.send("keyword receieved")
 
 def data_received(data):
     if (data == "stop detected"):
         print("stop detected")
+        waiting = False
         led.off()
 
     elif (data == "keyword detected"):
-        print(data)
-        led.on()
-        button.wait_for_press()
-        led.off()
-        s.send("keyword recieved")
+        # print(data)
+        # led.on()
+        # button.wait_for_press()
+        # led.off()
+        # s.send("keyword recieved")
         # pause()
 
-
+        print(data)
+        led.on()
+        waiting = True
+        
 s = BluetoothServer(data_received)
 while True:
     pause()
