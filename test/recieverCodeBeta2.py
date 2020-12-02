@@ -13,15 +13,12 @@ button = Button(3)
 #     s.send("keyword receieved")
 
 def data_received(data):
-    keyWords = {"help","hey"}
-    stopWords = {"stop"}
-
     print(type(data))
-    if any(word in data for word in stopWords):
+    if (data == "stop detected"):
         print("stop detected")
         led.off()
 
-    elif any(word in data for word in keyWords):
+    elif (data == "keyword detected"):
         print(data)
         led.on()
         command = input("Alert recieved. Type anything to emulate a button press")
