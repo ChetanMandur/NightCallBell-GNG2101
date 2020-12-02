@@ -11,13 +11,18 @@ waiting = False
 
 
 def button_pressed():
+    global waiting
     print("button pressed")
-    if (waiting == True):
+    if (waiting):
         print("accepting keyword")
         led.off()
         s.send("keyword receieved")
+    
+
+        
 
 def data_received(data):
+    global waiting
     if (data == "stop detected"):
         print("stop detected")
         waiting = False
@@ -30,10 +35,10 @@ def data_received(data):
         # led.off()
         # s.send("keyword recieved")
         # pause()
-
         print(data)
-        led.on()
         waiting = True
+        led.on()
+        
 
 button.when_pressed = button_pressed
 
