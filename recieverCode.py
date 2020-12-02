@@ -18,13 +18,13 @@ def data_received(data):
 
     if (data in stopWords):
         print("stop detected")
-        led.color=(0,0,0)
+        led.off()
 
     elif (data in keyWords):
         print(data)
-        led.color=(1,0,0)
+        led.on()
         button.wait_for_press()
-        led.color=(0,0,0)
+        led.off()
         s.send("keyword recieved")
         # pause()
 

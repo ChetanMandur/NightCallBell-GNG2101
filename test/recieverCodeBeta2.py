@@ -19,13 +19,13 @@ def data_received(data):
     print(type(data))
     if (data in stopWords):
         print("stop detected")
-        led.color=(0,0,0)
+        led.off()
 
     elif (data in keyWords):
         print(data)
-        led.color=(1,0,0)
+        led.on()
         command = input("Alert recieved. Type anything to emulate a button press")
-        led.color=(0,0,0)
+        led.off()
         s.send("keyword recieved")
         # pause()
 
