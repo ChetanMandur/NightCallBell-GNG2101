@@ -1,26 +1,35 @@
 from bluedot.btcomm import BluetoothServer
 from signal import pause
 from gpiozero import RGBLED, Button, LED
-
-
-# led = RGBLED(red=9, green=10,blue=11)
-led = LED(2)
-button = Button(4)
-waiting = False
+from time import sleep
 
 
 
-def button_pressed():
+led = LED(2)  #Pin layout for the LED
+button = Button(4) #Pin layout for button
+waiting = False #Checks if the receiver got sent a signal
+
+##Start animation
+for i in range(2):
+    led.on()
+    sleep(1)
+    led.off()
+    sleep(1)
+
+
+##This function will run each time the button is pressed
+def button_pressed(): 
     global waiting
-    print("button pressed")
     if (waiting):
         print("accepting keyword")
         led.off()
         s.send("keyword receieved")
+    else:
+        print("bell did not send an active signal")
     
 
         
-
+##This function will run each time data is received from the server
 def data_received(data):
     global waiting
     if (data == "stop detected"):
@@ -29,19 +38,14 @@ def data_received(data):
         led.off()
 
     elif (data == "keyword detected"):
-        # print(data)
-        # led.on()
-        # button.wait_for_press()
-        # led.off()
-        # s.send("keyword recieved")
-        # pause()
         print(data)
         waiting = True
         led.on()
         
 
-button.when_pressed = button_pressed
+button.when_pressed = button_pressed #Tells the button what function to run when pressed
+s = BluetoothServer(data_received) #Initiate the receiver
 
-s = BluetoothServer(data_received)
+##Main look that runs forever (or until keyboard interuption)
 while True:
     pause()
