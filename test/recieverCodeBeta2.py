@@ -17,11 +17,11 @@ def data_received(data):
     stopWords = {"stop"}
 
     print(type(data))
-    if (data in stopWords):
+    if any(word in data for word in stopWords):
         print("stop detected")
         led.off()
 
-    elif (data in keyWords):
+    elif any(word in data for word in keyWords):
         print(data)
         led.on()
         command = input("Alert recieved. Type anything to emulate a button press")
