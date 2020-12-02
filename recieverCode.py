@@ -24,6 +24,7 @@ def button_pressed():
         print("accepting keyword")
         led.off()
         s.send("keyword receieved")
+        waiting = False
     else:
         print("bell did not send an active signal")
     
