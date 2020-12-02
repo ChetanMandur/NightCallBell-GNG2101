@@ -10,14 +10,12 @@ r = sr.Recognizer() #Starts the voice recognition
 
 led = RGBLED(red=9, green=11,blue=10) ##Grabs the pins for the RGB led
 
+keepGoing = True
+
 def data_recieved(data):
     print(data)
     led.color = (0,0,0)
     print("receiver pressed the button")
-
-
-c = BluetoothClient("raspberrypi", data_recieved)
-
 
 ##Start animation
 led.color = (1,0,0)
@@ -27,6 +25,16 @@ sleep(1)
 led.color = Color('pink')
 led.blink()
 led.color = (0,0,0)
+
+
+while keepGoing:
+    try:
+        c = BluetoothClient("raspberrypi", data_recieved)
+        print("Receiver found!")
+        keepGoing = False
+    
+    except:
+        print("Receiver not found... keep searching")
 
 
 while True:

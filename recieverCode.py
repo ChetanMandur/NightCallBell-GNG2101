@@ -13,14 +13,11 @@ button = Button(3)
 #     s.send("keyword receieved")
 
 def data_received(data):
-    keyWords = {"help","hey"}
-    stopWords = {"stop"}
-
-    if (data in stopWords):
+    if (data == "stop detected"):
         print("stop detected")
         led.off()
 
-    elif (data in keyWords):
+    elif (data == "keyword detected"):
         print(data)
         led.on()
         button.wait_for_press()
