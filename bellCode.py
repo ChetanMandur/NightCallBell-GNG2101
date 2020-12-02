@@ -18,13 +18,21 @@ def data_recieved(data):
     print("receiver pressed the button")
 
 ##Start animation
-led.color = (1,0,0)
-sleep(1)
-led.color = (0,1,0)
-sleep(1)
-led.color = Color('pink')
-led.blink()
-led.color = (0,0,0)
+
+# led.color = (1,0,0)
+# sleep(1)
+# led.color = (0,1,0)
+# sleep(1)
+# led.color = Color('pink')
+# led.blink()
+# led.color = (0,0,0)
+
+for i in range(2):
+    led.color = Color('pink')
+    sleep(1)
+    led.color = (0,0,0)
+    sleep(1)
+
 
 
 while keepGoing:
