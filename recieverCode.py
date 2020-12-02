@@ -5,7 +5,7 @@ from gpiozero import RGBLED, Button, LED
 
 # led = RGBLED(red=9, green=10,blue=11)
 led = LED(2)
-button = Button(3)
+button = Button(4)
 waiting = False
 
 
