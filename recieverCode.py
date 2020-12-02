@@ -11,7 +11,9 @@ waiting = False
 
 
 def button_pressed():
+    print("button pressed")
     if (waiting == True):
+        print("accepting keyword")
         led.off()
         s.send("keyword receieved")
 
