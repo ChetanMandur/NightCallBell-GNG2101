@@ -8,7 +8,7 @@ led = LED(2)
 button = Button(3)
 waiting = False
 
-button.when_pressed = button_pressed
+
 
 def button_pressed():
     if (waiting == True):
@@ -32,7 +32,9 @@ def data_received(data):
         print(data)
         led.on()
         waiting = True
-        
+
+button.when_pressed = button_pressed
+
 s = BluetoothServer(data_received)
 while True:
     pause()
