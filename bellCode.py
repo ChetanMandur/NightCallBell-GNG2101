@@ -8,7 +8,7 @@ import speech_recognition as sr
 
 r = sr.Recognizer() #Starts the voice recognition
 
-led = RGBLED(red=9, green=10,blue=11) ##Grabs the pins for the RGB led
+led = RGBLED(red=9, green=11,blue=10) ##Grabs the pins for the RGB led
 
 def data_recieved(data):
     print(data)
